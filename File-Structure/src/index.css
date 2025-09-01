@@ -1,0 +1,9 @@
+.file {
+  margin-left: 20px;
+}
+
+.folder {
+  margin-left: 30px;
+  cursor: pointer;
+  padding: 2px;
+}
