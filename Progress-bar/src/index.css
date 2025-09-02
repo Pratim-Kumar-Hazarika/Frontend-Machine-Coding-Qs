@@ -1,0 +1,41 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.progress {
+  position: relative;
+  height: 20px;
+  width: 500px;
+  border: 1px solid black;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.progress span {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.progress div {
+  height: 100%;
+  background-color: #00c251;
+}
+
+.progress-bar-2 {
+  position: relative;
+  height: 20px;
+  width: 500px;
+  border: 1px solid black;
+  overflow: hidden;
+  border-radius: 20px;
+  margin: 10px;
+}
+.progress-bar-2 div {
+  padding: 3px;
+  text-align: right;
+  transition: 0.5s ease-in;
+}
