@@ -18,7 +18,7 @@ function Navbar() {
             checked={theme === "dark"}
             onChange={toggleMode}
           />
-          <span className="slider round"></span>
+          <span className="slider "></span>
         </label>
       </div>
     </nav>
