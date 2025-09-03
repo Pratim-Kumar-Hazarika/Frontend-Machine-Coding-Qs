@@ -19,7 +19,7 @@ export const ThemeProvider = ({ children }: React.PropsWithChildren) => {
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
-  }, [isDarkMode]);
+  }, [isDarkMode, theme]);
 
   return (
     <ThemeContext.Provider value={{ toggleMode, theme }}>
