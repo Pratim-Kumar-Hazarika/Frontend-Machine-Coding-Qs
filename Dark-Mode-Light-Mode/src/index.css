@@ -1,0 +1,72 @@
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --heading-color: #444444;
+}
+
+[data-theme="dark"] {
+  --bg-color: #333333;
+  --text-color: #ffffff;
+  --heading-color: #dddddd;
+}
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+h1 {
+  color: var(--heading-color);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar div {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.navbar div a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.mode-switch label {
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 20px;
+}
+
+.mode-switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 20px;
+  transition: 0.4s;
+}
+
+.mode-switch input:checked + .slider {
+  background-color: aqua;
+}
+
+.mode-switch .slider:before {
+  position: absolute;
+  content: "☀️";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 2px;
+  top: 0px;
+}
+
+.mode-switch input:checked + .slider:before {
+  transform: translateX(100%);
+  content: "🌑";
+}
