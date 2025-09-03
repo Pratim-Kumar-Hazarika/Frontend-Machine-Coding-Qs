@@ -65,6 +65,7 @@ function Stepper({ stepsConfig }: StepperProps) {
             </div>
           );
         })}
+
         <div
           style={{
             width: `calc(100% - ${margins.marginLeft + margins.marginRight}px)`,
@@ -82,9 +83,13 @@ function Stepper({ stepsConfig }: StepperProps) {
           ></div>
         </div>
       </div>
+
       <br />
+
       <ActiveComponent />
+
       <br />
+
       {!isComplete && (
         <button className="button" onClick={handleNext}>
           {currentStep === stepsConfig.length - 1 ? "Finish" : "Next"}
