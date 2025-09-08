@@ -1,0 +1,17 @@
+.tabs-container {
+  display: flex;
+}
+
+.tabs {
+  border: 1px solid black;
+  padding: 10px;
+  cursor: pointer;
+}
+.tab-item {
+  border: 1px solid black;
+  padding: 5px;
+  height: 200px;
+}
+.error {
+  color: red;
+}
