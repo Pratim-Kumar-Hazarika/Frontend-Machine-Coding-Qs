@@ -1,0 +1,25 @@
+.snackbar {
+  position: fixed;
+  top: 10px;
+  right: 30px;
+  border: 1px solid black;
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  width: 400px;
+  /* margin: 10px; */
+  border-radius: 4px;
+}
+
+.error {
+  background-color: red;
+}
+.success {
+  background-color: green;
+}
+.warning {
+  background-color: yellow;
+}
+.info {
+  background-color: blue;
+}
