@@ -2,7 +2,7 @@ import React, { createRef, useEffect, useRef } from "react";
 import Note from "./Note";
 
 function Notes({ notes, setNotes }) {
-  const noteRefs = useRef([]);
+  const noteRefs = useRef({});
 
   useEffect(() => {
     const savedNotes = JSON.parse(localStorage.getItem("notes")) || [];
@@ -35,18 +35,22 @@ function Notes({ notes, setNotes }) {
 
   function handleDragStart(note, e) {
     const { id } = note;
-    const noteRef = noteRefs.current[id]?.current;
+    const noteRef = noteRefs.current[id];
     const rect = noteRef.getBoundingClientRect();
     const offsetX = e.clientX - rect.left;
     const offsetY = e.clientY - rect.top;
 
     const startPos = note.position;
 
+    let animationFrame = null;
     const hadleMouseMove = (e) => {
-      const newX = e.clientX - offsetX;
-      const newY = e.clientY - offsetY;
-      noteRef.style.left = `${newX}px`;
-      noteRef.style.top = `${newY}px`;
+      cancelAnimationFrame(animationFrame);
+      animationFrame = requestAnimationFrame(() => {
+        const newX = e.clientX - offsetX;
+        const newY = e.clientY - offsetY;
+        noteRef.style.left = `${newX}px`;
+        noteRef.style.top = `${newY}px`;
+      });
     };
 
     const hadleMouseUp = () => {
@@ -68,12 +72,12 @@ function Notes({ notes, setNotes }) {
     document.addEventListener("mouseup", hadleMouseUp);
 
     const checkForOverlap = (id) => {
-      const currentNote = noteRefs.current[id].current;
+      const currentNote = noteRefs.current[id];
       const currentRect = currentNote.getBoundingClientRect();
       return notes.some((note) => {
         if (note.id == id) return false;
 
-        const otherNoteRef = noteRefs.current[note.id].current;
+        const otherNoteRef = noteRefs.current[note.id];
         const otherNoteRect = otherNoteRef.getBoundingClientRect();
 
         const overlap = !(
@@ -100,11 +104,7 @@ function Notes({ notes, setNotes }) {
         return (
           <Note
             key={item.id}
-            ref={
-              noteRefs.current[item.id]
-                ? noteRefs.current[item.id]
-                : (noteRefs.current[item.id] = createRef())
-            }
+            ref={(el) => (noteRefs.current[item.id] = el)}
             {...item}
             initialPosition={item.position}
             onMouseDown={(e) => handleDragStart(item, e)}
