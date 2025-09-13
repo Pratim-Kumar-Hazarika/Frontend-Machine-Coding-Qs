@@ -1,0 +1,35 @@
+.app {
+  font-size: 2.5em;
+  align-items: center;
+  padding: 30px;
+  color: black;
+}
+.valid {
+  color: green;
+}
+.invalid {
+  color: red;
+  background-color: rgb(233, 178, 178);
+}
+
+@keyframes blink {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.blink::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 56px;
+  animation-name: blink;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in;
+  background-color: purple;
+  margin-top: 5px;
+}
